@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //Setting up scanner and character
         Scanner playerInput = new Scanner(System.in);
         Character playerCharacter = new Character();
 
@@ -12,11 +13,15 @@ public class Main {
     }
 
     private static void runGame(Character playerCharacter, Scanner playerInput) {
+        //Run character setup
         setupCharacter(playerCharacter, playerInput);
+        //Sets playerJob for shorter calls
         Job playerJob = playerCharacter.getJob();
+
         playerJob.levelUp();
         playerJob.levelUp();
 
+        //Print player info after creation
         System.out.println("Character name: " + playerCharacter.getName());
         System.out.println("Job: " + playerJob.getJobName());
         System.out.println("Strength: " + playerJob.getStrength());
@@ -43,12 +48,14 @@ public class Main {
             playerCharacter.setJob(setupJob(jobName));
             playerCharacter.setWeapon(setupStartingWeapon(playerCharacter));
         }
+        //Checks which primary stat current character has
         switch (playerCharacter.getJob().getPrimaryStat()) {
             case "Strength" -> playerCharacter.setTotalDamage(playerCharacter.getWeapon(), playerCharacter.getJob().getStrength());
             case "Dexterity" -> playerCharacter.setTotalDamage(playerCharacter.getWeapon(), playerCharacter.getJob().getDexterity());
             case "Intelligence" -> playerCharacter.setTotalDamage(playerCharacter.getWeapon(), playerCharacter.getJob().getIntelligence());
         }
 
+        //Sets total DPS with primary stat bonus
         playerCharacter.setTotalDamagePerSecond(playerCharacter, playerCharacter.getWeapon());
     }
 
@@ -133,9 +140,7 @@ public class Main {
         }
         return startingWeapon;
     }
-
-
-
+    
     private static String validateJobInput(String jobName) {
         if(jobName.equals("Black Mage") || jobName.equals("Bard") || jobName.equals("Ninja") || jobName.equals("Warrior")) {
             return jobName;
