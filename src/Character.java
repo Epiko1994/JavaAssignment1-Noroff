@@ -6,7 +6,9 @@ public class Character {
     private String characterName;
     private Job job;
     private Weapon weapon;
-    private HashMap<String, Armour> armour;
+    private Armour headArmour;
+    private Armour bodyArmour;
+    private Armour legArmour;
     private double totalDamage;
     private double totalDamagePerSecond;
 

@@ -7,7 +7,7 @@ public class Armour extends Item {
         Mail,
         Plate
     }
-    private enum armourType {
+    private enum armourSlot {
         Head,
         Body,
         Legs
@@ -17,7 +17,7 @@ public class Armour extends Item {
     private int bonusDexterity;
     private int bonusIntelligence;
     private String armourClass;
-    private String armourType;
+    private String armourSlot;
 
     public void generateStartingArmour() {
 
